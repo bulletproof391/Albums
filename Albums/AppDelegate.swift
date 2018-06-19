@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let albumModel = AlbumModel()
+        let albumsArtworksViewModel = AlbumsArtworksViewModel(model: albumModel)
+        let navigationController = self.window!.rootViewController as! UINavigationController
+        let aacvc: AlbumsArtworksCollectionViewController =  navigationController.viewControllers[0] as! AlbumsArtworksCollectionViewController
+        aacvc.albumsArtworksViewModel = albumsArtworksViewModel
+        
         return true
     }
 
