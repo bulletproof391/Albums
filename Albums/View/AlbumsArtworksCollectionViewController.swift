@@ -14,18 +14,22 @@ enum MainVCSegues: String {
     case showAlbumDetail
 }
 
-class AlbumsArtworksCollectionViewController: UICollectionViewController {
+class AlbumsArtworksCollectionViewController: UICollectionViewController, UISearchBarDelegate {
     // MARK: - Properties
+    let searchBar = UISearchBar()
     var albumsArtworksViewModel: AlbumsArtworksViewModel!
     
     // MARK: - View loaded
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Do any additional setup after loading the view.
+        // Configuring search bar
+        setUpSearchBar()
+        // Bind model
+        bindModel()
+        // Set up layout
+        setUpLayout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,66 +37,85 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    // MARK: - Search Bar
+    /// Configure Search Bar
+    func setUpSearchBar() {
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search albums"
+        searchBar.delegate = self
+        
+        self.navigationItem.titleView = searchBar
+    }
+    
+    // clear Collection View when nothing is typed
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            albumsArtworksViewModel.disposeOfResources()
+            collectionView?.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        // start searching
+        guard let searchingString = searchBar.text else {
+            fatalError("No valid string was submitted")
+        }
+        
+        albumsArtworksViewModel.searchAlbum(searchingString)
+    }
+    
+    // MARK: - Catching signals on data updating
+    func bindModel() {
+        albumsArtworksViewModel.hasUpdated.signal.observeResult{ [weak self] (result) in
+            guard let weakSelf = self else { return }
+            DispatchQueue.main.async {
+                weakSelf.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Set up layout
+    func setUpLayout() {
+        let itemSize = UIScreen.main.bounds.width / 3 - 3
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.sectionInset = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
+        layout.itemSize = CGSize(width: itemSize, height: itemSize)
+        layout.minimumInteritemSpacing = 3
+        layout.minimumLineSpacing = 3
+        
+        collectionView?.collectionViewLayout = layout
+    }
+    
+    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
     }
-    */
-
-    // MARK: UICollectionViewDataSource
-
+    
+    
+    // MARK: - UICollectionViewDataSource
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return albumsArtworksViewModel.numberOfSections()
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return albumsArtworksViewModel.numberOfItemsInSection(section)
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AlbumCollectionViewCell
+        
         // Configure the cell
-    
+        cell.viewModel = albumsArtworksViewModel.getCellViewModel(at: indexPath)
+        
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

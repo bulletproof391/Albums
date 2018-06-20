@@ -6,4 +6,14 @@
 //  Copyright © 2018 Дмитрий Вашлаев. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import ReactiveSwift
+
+class AlbumCVCViewModel {
+    // MARK: Properties
+    private(set) var albumImage: MutableProperty<UIImage>?
+    
+    init(withAlbumImage image: MutableProperty<UIImage>?) {
+        self.albumImage = image
+    }
+}
