@@ -9,9 +9,14 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
+private let numberOfItems: CGFloat = 3
 
 enum MainVCSegues: String {
     case showAlbumDetail
+}
+
+enum CollectionViewLayout: CGFloat {
+    case interitemSpacing = 3
 }
 
 class AlbumsArtworksCollectionViewController: UICollectionViewController, UISearchBarDelegate {
@@ -78,13 +83,14 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
     
     // MARK: - Set up layout
     func setUpLayout() {
-        let itemSize = UIScreen.main.bounds.width / 3 - 3
+        let interitemSpacing = CollectionViewLayout.interitemSpacing.rawValue
+        let itemSize = UIScreen.main.bounds.width / numberOfItems - interitemSpacing
         let layout = UICollectionViewFlowLayout()
         
-        layout.sectionInset = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: interitemSpacing, left: 0, bottom: interitemSpacing, right: 0)
         layout.itemSize = CGSize(width: itemSize, height: itemSize)
-        layout.minimumInteritemSpacing = 3
-        layout.minimumLineSpacing = 3
+        layout.minimumInteritemSpacing = interitemSpacing
+        layout.minimumLineSpacing = interitemSpacing
         
         collectionView?.collectionViewLayout = layout
     }
