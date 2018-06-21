@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="5.5999999999999996" y="102.99850074962519"/>
         </scene>
-        <!--View Controller-->
+        <!--Album Detailed View Controller-->
         <scene sceneID="CzD-51-yg4">
             <objects>
-                <viewController id="dJT-9X-TrY" sceneMemberID="viewController">
+                <viewController id="dJT-9X-TrY" customClass="AlbumDetailedViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nno-mx-3wr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAO-NH-B1D">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAO-NH-B1D">
                                 <rect key="frame" x="16" y="199" width="343" height="448"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,6 +105,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="LA6-l9-9sW"/>
                     </view>
+                    <connections>
+                        <outlet property="albumImage" destination="hTn-wj-vvr" id="hRV-hx-x5e"/>
+                        <outlet property="albumName" destination="dhT-q0-3H1" id="SsZ-Yo-jGC"/>
+                        <outlet property="artistName" destination="WDb-X3-7aX" id="GxX-vA-QDP"/>
+                        <outlet property="tableView" destination="MAO-NH-B1D" id="h5k-ND-xZj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhH-nD-jdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

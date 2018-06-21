@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AB7481020DBCBF900242096 /* AlbumDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7480F20DBCBF900242096 /* AlbumDetailedViewController.swift */; };
+		0AB7481220DBCCC000242096 /* AlbumDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7481120DBCCC000242096 /* AlbumDetailedViewModel.swift */; };
+		0AB7481520DBCD1A00242096 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7481420DBCD1A00242096 /* UILabel.swift */; };
 		0AD279A420D7FE8F00C08AA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD279A320D7FE8F00C08AA9 /* AppDelegate.swift */; };
 		0AD279A920D7FE8F00C08AA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD279A720D7FE8F00C08AA9 /* Main.storyboard */; };
 		0AD279AB20D7FE8F00C08AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AD279AA20D7FE8F00C08AA9 /* Assets.xcassets */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		003FEB6402EEC15778842785 /* Pods-Albums.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Albums.release.xcconfig"; path = "Pods/Target Support Files/Pods-Albums/Pods-Albums.release.xcconfig"; sourceTree = "<group>"; };
+		0AB7480F20DBCBF900242096 /* AlbumDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailedViewController.swift; sourceTree = "<group>"; };
+		0AB7481120DBCCC000242096 /* AlbumDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailedViewModel.swift; sourceTree = "<group>"; };
+		0AB7481420DBCD1A00242096 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		0AD279A020D7FE8F00C08AA9 /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD279A320D7FE8F00C08AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AD279A820D7FE8F00C08AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AB7481320DBCCEC00242096 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				0AB7481420DBCD1A00242096 /* UILabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		0AD2799720D7FE8F00C08AA9 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +105,8 @@
 			children = (
 				0AEA64E020D94E880034A33A /* AlbumsArtworksCollectionViewController.swift */,
 				0AEA64E220D94EB90034A33A /* Cell */,
+				0AB7480F20DBCBF900242096 /* AlbumDetailedViewController.swift */,
+				0AB7481320DBCCEC00242096 /* Label */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,6 +116,7 @@
 			children = (
 				0AEA64E520D94FB70034A33A /* AlbumsArtworksViewModel.swift */,
 				0AEA64E720D94FCC0034A33A /* CellViewModel */,
+				0AB7481120DBCCC000242096 /* AlbumDetailedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -279,9 +296,12 @@
 			files = (
 				0AEA64E920D94FFE0034A33A /* AlbumCVCViewModel.swift in Sources */,
 				0AEA64EB20D950230034A33A /* AlbumModel.swift in Sources */,
+				0AB7481020DBCBF900242096 /* AlbumDetailedViewController.swift in Sources */,
+				0AB7481520DBCD1A00242096 /* UILabel.swift in Sources */,
 				0AEA64E420D94EDD0034A33A /* AlbumCollectionViewCell.swift in Sources */,
 				0AEA64E620D94FB70034A33A /* AlbumsArtworksViewModel.swift in Sources */,
 				0AEA64F020D950930034A33A /* iTunesAPI.swift in Sources */,
+				0AB7481220DBCCC000242096 /* AlbumDetailedViewModel.swift in Sources */,
 				0AD279A420D7FE8F00C08AA9 /* AppDelegate.swift in Sources */,
 				0AEA64ED20D9503B0034A33A /* Album.swift in Sources */,
 				0AEA64E120D94E880034A33A /* AlbumsArtworksCollectionViewController.swift in Sources */,

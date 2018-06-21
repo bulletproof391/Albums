@@ -15,6 +15,7 @@ class AlbumsArtworksViewModel {
     private var albumModel: AlbumModel?
     private var albumsArray: [Album] = [Album]()
     private var cellViewModelArray: [AlbumCVCViewModel] = [AlbumCVCViewModel]()
+    private var albumDetailedViewModelArray: [AlbumDetailedViewModel] = [AlbumDetailedViewModel]()
     
     // Public variables
     private(set) var hasUpdated = MutableProperty(false)
@@ -35,18 +36,25 @@ class AlbumsArtworksViewModel {
     
     private func initializeViewModels(with albumsArray: [Album]) {
         cellViewModelArray.removeAll()
+        albumDetailedViewModelArray.removeAll()
         for album in albumsArray {
             cellViewModelArray.append(AlbumCVCViewModel(withAlbumImage: album.artwork100))
+            albumDetailedViewModelArray.append(AlbumDetailedViewModel(with: album))
         }
     }
     
     func disposeOfResources() {
         albumsArray.removeAll()
         cellViewModelArray.removeAll()
+        albumDetailedViewModelArray.removeAll()
     }
     
     func searchAlbum(_ searchingString: String) {
         albumModel?.searchAlbumsWithName(searchingString)
+    }
+    
+    func getAlbumDetailedViewModel(at indexPath: IndexPath) -> AlbumDetailedViewModel? {
+        return albumDetailedViewModelArray[indexPath.row]
     }
     
     // MARK: Updating collection view
@@ -62,3 +70,4 @@ class AlbumsArtworksViewModel {
         return cellViewModelArray[indexPath.row]
     }
 }
+

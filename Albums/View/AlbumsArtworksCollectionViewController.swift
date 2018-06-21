@@ -95,12 +95,17 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        
+        if segue.identifier == MainVCSegues.showAlbumDetail.rawValue {
+            let destinationViewController =  segue.destination as! AlbumDetailedViewController
+            if let indexPaths = collectionView?.indexPathsForSelectedItems {
+                let index = indexPaths[0]
+                destinationViewController.viewModel = albumsArtworksViewModel.getAlbumDetailedViewModel(at: index)
+            }
+        }
     }
     
     
     // MARK: - UICollectionViewDataSource
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return albumsArtworksViewModel.numberOfSections()
     }
