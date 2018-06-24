@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1B605220DFB01F00F4834F /* AlbumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1B605120DFB01F00F4834F /* AlbumsTests.swift */; };
 		0AB7481020DBCBF900242096 /* AlbumDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7480F20DBCBF900242096 /* AlbumDetailedViewController.swift */; };
 		0AB7481220DBCCC000242096 /* AlbumDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7481120DBCCC000242096 /* AlbumDetailedViewModel.swift */; };
 		0AB7481520DBCD1A00242096 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7481420DBCD1A00242096 /* UILabel.swift */; };
@@ -24,8 +25,21 @@
 		2B9C5512C6F7F942E7D9C6C3 /* Pods_Albums.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BDDC800F22A9894E9A22C8 /* Pods_Albums.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0A1B605420DFB01F00F4834F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AD2799820D7FE8F00C08AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AD2799F20D7FE8F00C08AA9;
+			remoteInfo = Albums;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		003FEB6402EEC15778842785 /* Pods-Albums.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Albums.release.xcconfig"; path = "Pods/Target Support Files/Pods-Albums/Pods-Albums.release.xcconfig"; sourceTree = "<group>"; };
+		0A1B604F20DFB01F00F4834F /* AlbumsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1B605120DFB01F00F4834F /* AlbumsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTests.swift; sourceTree = "<group>"; };
+		0A1B605320DFB01F00F4834F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AB7480F20DBCBF900242096 /* AlbumDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailedViewController.swift; sourceTree = "<group>"; };
 		0AB7481120DBCCC000242096 /* AlbumDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailedViewModel.swift; sourceTree = "<group>"; };
 		0AB7481420DBCD1A00242096 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -47,6 +61,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A1B604C20DFB01F00F4834F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AD2799D20D7FE8F00C08AA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1B605020DFB01F00F4834F /* AlbumsTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A1B605120DFB01F00F4834F /* AlbumsTests.swift */,
+				0A1B605320DFB01F00F4834F /* Info.plist */,
+			);
+			path = AlbumsTests;
+			sourceTree = "<group>";
+		};
 		0AB7481320DBCCEC00242096 /* Label */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				0AD279A220D7FE8F00C08AA9 /* Albums */,
+				0A1B605020DFB01F00F4834F /* AlbumsTests */,
 				0AD279A120D7FE8F00C08AA9 /* Products */,
 				B201FA17E43A010743AC0CEF /* Pods */,
 				87372B33BBDFF50CC1ADAC33 /* Frameworks */,
@@ -80,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				0AD279A020D7FE8F00C08AA9 /* Albums.app */,
+				0A1B604F20DFB01F00F4834F /* AlbumsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,6 +206,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0A1B604E20DFB01F00F4834F /* AlbumsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A1B605820DFB01F00F4834F /* Build configuration list for PBXNativeTarget "AlbumsTests" */;
+			buildPhases = (
+				0A1B604B20DFB01F00F4834F /* Sources */,
+				0A1B604C20DFB01F00F4834F /* Frameworks */,
+				0A1B604D20DFB01F00F4834F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A1B605520DFB01F00F4834F /* PBXTargetDependency */,
+			);
+			name = AlbumsTests;
+			productName = AlbumsTests;
+			productReference = 0A1B604F20DFB01F00F4834F /* AlbumsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0AD2799F20D7FE8F00C08AA9 /* Albums */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AD279B220D7FE8F00C08AA9 /* Build configuration list for PBXNativeTarget "Albums" */;
@@ -204,6 +254,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Дмитрий Вашлаев";
 				TargetAttributes = {
+					0A1B604E20DFB01F00F4834F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0AD2799F20D7FE8F00C08AA9;
+					};
 					0AD2799F20D7FE8F00C08AA9 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -224,11 +279,19 @@
 			projectRoot = "";
 			targets = (
 				0AD2799F20D7FE8F00C08AA9 /* Albums */,
+				0A1B604E20DFB01F00F4834F /* AlbumsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0A1B604D20DFB01F00F4834F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AD2799E20D7FE8F00C08AA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +353,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A1B604B20DFB01F00F4834F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1B605220DFB01F00F4834F /* AlbumsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AD2799C20D7FE8F00C08AA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +380,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A1B605520DFB01F00F4834F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AD2799F20D7FE8F00C08AA9 /* Albums */;
+			targetProxy = 0A1B605420DFB01F00F4834F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0AD279A720D7FE8F00C08AA9 /* Main.storyboard */ = {
@@ -330,6 +409,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0A1B605620DFB01F00F4834F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJD957SY8C;
+				INFOPLIST_FILE = AlbumsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DVDevelopment.AlbumsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Albums.app/Albums";
+			};
+			name = Debug;
+		};
+		0A1B605720DFB01F00F4834F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJD957SY8C;
+				INFOPLIST_FILE = AlbumsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DVDevelopment.AlbumsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Albums.app/Albums";
+			};
+			name = Release;
+		};
 		0AD279B020D7FE8F00C08AA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -474,6 +585,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A1B605820DFB01F00F4834F /* Build configuration list for PBXNativeTarget "AlbumsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A1B605620DFB01F00F4834F /* Debug */,
+				0A1B605720DFB01F00F4834F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0AD2799B20D7FE8F00C08AA9 /* Build configuration list for PBXProject "Albums" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
