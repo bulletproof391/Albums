@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let albumModel = AlbumModel()
         let albumsArtworksViewModel = AlbumsArtworksViewModel(model: albumModel)
         let navigationController = self.window!.rootViewController as! UINavigationController
-        let aacvc: AlbumsArtworksCollectionViewController =  navigationController.viewControllers[0] as! AlbumsArtworksCollectionViewController
-        aacvc.albumsArtworksViewModel = albumsArtworksViewModel
+        let albumsArtworksCollectionViewController =  navigationController.viewControllers[0] as! AlbumsArtworksCollectionViewController
+        albumsArtworksCollectionViewController.albumsArtworksViewModel = albumsArtworksViewModel
         
         return true
     }

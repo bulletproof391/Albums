@@ -20,15 +20,16 @@ enum CollectionViewLayout: CGFloat {
 }
 
 class AlbumsArtworksCollectionViewController: UICollectionViewController, UISearchBarDelegate {
-    // MARK: - Properties
+    // MARK: - Public Properties
     let searchBar = UISearchBar()
     var albumsArtworksViewModel: AlbumsArtworksViewModel!
     
-    // MARK: - View loaded
+    
+    // MARK: - Public Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         // Configuring search bar
         setUpSearchBar()
         // Bind model
@@ -52,14 +53,6 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
         self.navigationItem.titleView = searchBar
     }
     
-    // clear Collection View when nothing is typed
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            albumsArtworksViewModel.disposeOfResources()
-            collectionView?.reloadData()
-        }
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         
@@ -81,7 +74,7 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
         }
     }
     
-    // MARK: - Set up layout
+    // MARK: - Set Up Layout
     func setUpLayout() {
         let interitemSpacing = CollectionViewLayout.interitemSpacing.rawValue
         let itemSize = UIScreen.main.bounds.width / numberOfItems - interitemSpacing

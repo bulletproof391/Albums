@@ -50,6 +50,7 @@ class AlbumsArtworksViewModel {
     }
     
     func searchAlbum(_ searchingString: String) {
+        disposeOfResources()
         albumModel?.searchAlbumsWithName(searchingString)
     }
     

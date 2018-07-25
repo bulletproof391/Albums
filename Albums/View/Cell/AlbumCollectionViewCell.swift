@@ -11,7 +11,7 @@ import ReactiveSwift
 //import enum Result.NoError
 
 class AlbumCollectionViewCell: UICollectionViewCell {
-    // MARK: Properties
+    // MARK: Public Properties
     @IBOutlet weak var albumImage: UIImageView!
     
     var imageDisposable: Disposable?
@@ -21,7 +21,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: Methods
+    // MARK: - Private Methods
     private func initializeCell() {
         imageDisposable = viewModel?.albumImage?.producer.startWithResult({ [weak self] (receivedImage) in
             guard let weakSelf = self else { return }
@@ -34,6 +34,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         
     }
     
+    // MARK: - Public Methods
     override func prepareForReuse() {
         super.prepareForReuse()
         imageDisposable?.dispose()
