@@ -10,10 +10,11 @@ import Foundation
 import ReactiveSwift
 
 class AlbumModel {
-    // MARK: Properties
+    // MARK: - Public Properties
     // Array to be observed from ViewModel
     private(set) var albumsArray = MutableProperty([Album]())
     
+    // MARK: - Private Methods
     private func initAlbumsArrayWith(albumsInfo array: [AlbumInfo]) {
         var albums = [Album] ()
         for item in array {
@@ -23,6 +24,7 @@ class AlbumModel {
         albumsArray.value = albums
     }
     
+    // MARK: - Public Methods
     func searchAlbumsWithName(_ albumName:String) {
         let itunes = ItunesAPI()
         

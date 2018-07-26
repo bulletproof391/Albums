@@ -55,40 +55,44 @@ struct Song: Decodable {
 }
 
 class Album {
+    // MARK: - Public Properties
     private(set) var info: AlbumInfo?
     private(set) var songs = MutableProperty([Song]())
-    private(set) var artwork60 = MutableProperty(UIImage())
-    private(set) var artwork100 = MutableProperty(UIImage())
+    private(set) var artwork60: String? // = MutableProperty(UIImage())
+    private(set) var artwork100: String? // = MutableProperty(UIImage())
     
+    // MARK: - Initializer
     init(withAlbumInfo albumInfo: AlbumInfo) {
-        self.info = albumInfo
+        info = albumInfo
         
         if let collectionId = info?.collectionId {
             deriveListOfSongs(withAlbum: collectionId)
         }
         
-        if let artworkURLString60 = info?.artworkUrl60, let artworkURLString100 = info?.artworkUrl100 {
-            deriveArtworks(withURLString: artworkURLString60) { [weak self] (receivedData) in
-                guard let weakSelf = self else { return }
-                guard let data = receivedData else { return }
-                
-                if let image = UIImage(data: data) {
-                    weakSelf.artwork60.value = image
-                }
-            }
-            
-            deriveArtworks(withURLString: artworkURLString100) { [weak self] (receivedData) in
-                guard let weakSelf = self else { return }
-                guard let data = receivedData else { return }
-                
-                if let image = UIImage(data: data) {
-                    weakSelf.artwork100.value = image
-                }
-            }
-        }
+        artwork60 = info?.artworkUrl60
+        artwork100 = info?.artworkUrl100
+//        if let artworkURLString60 = info?.artworkUrl60, let artworkURLString100 = info?.artworkUrl100 {
+//            deriveArtworks(withURLString: artworkURLString60) { [weak self] (receivedData) in
+//                guard let weakSelf = self else { return }
+//                guard let data = receivedData else { return }
+//
+//                if let image = UIImage(data: data) {
+//                    weakSelf.artwork60.value = image
+//                }
+//            }
+//
+//            deriveArtworks(withURLString: artworkURLString100) { [weak self] (receivedData) in
+//                guard let weakSelf = self else { return }
+//                guard let data = receivedData else { return }
+//
+//                if let image = UIImage(data: data) {
+//                    weakSelf.artwork100.value = image
+//                }
+//            }
+//        }
     }
     
-    
+    // MARK: - Private Methods
     private func deriveListOfSongs(withAlbum collectionId: Int) {
         let itunes = ItunesAPI()
         
@@ -115,12 +119,12 @@ class Album {
         }
     }
     
-    private func deriveArtworks(withURLString urlString: String, completionHandler: @escaping (Data?) -> Void) {
-        guard let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, urlRsponse, err) in
-            completionHandler(data)
-            }.resume()
-    }
+//    private func deriveArtworks(withURLString urlString: String, completionHandler: @escaping (Data?) -> Void) {
+//        guard let url = URL(string: urlString) else { return }
+//
+//        URLSession.shared.dataTask(with: url) { (data, urlRsponse, err) in
+//            completionHandler(data)
+//            }.resume()
+//    }
 }
 

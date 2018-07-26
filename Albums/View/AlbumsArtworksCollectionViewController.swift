@@ -66,7 +66,7 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
     
     // MARK: - Catching signals on data updating
     func bindModel() {
-        albumsArtworksViewModel.hasUpdated.signal.observeResult{ [weak self] (result) in
+        albumsArtworksViewModel.isFound.signal.observeResult{ [weak self] (result) in
             guard let weakSelf = self else { return }
             DispatchQueue.main.async {
                 weakSelf.collectionView?.reloadData()
@@ -106,6 +106,7 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
     
     // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        nothingIsFound()
         return albumsArtworksViewModel.numberOfSections()
     }
     
@@ -121,5 +122,18 @@ class AlbumsArtworksCollectionViewController: UICollectionViewController, UISear
         cell.viewModel = albumsArtworksViewModel.getCellViewModel(at: indexPath)
         
         return cell
+    }
+    
+    // MARK: - Private Methods
+    private func nothingIsFound() {
+        if !albumsArtworksViewModel.isFound.value {
+            let noDataLabel = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView!.bounds.size.width, height: collectionView!.bounds.size.height))
+            noDataLabel.text = "Nothing is found"
+            noDataLabel.textColor = UIColor.black
+            noDataLabel.textAlignment = .center
+            collectionView!.backgroundView = noDataLabel
+        } else {
+            collectionView!.backgroundView = nil
+        }
     }
 }

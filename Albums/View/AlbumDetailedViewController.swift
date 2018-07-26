@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class AlbumDetailedViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource{
-    // MARK: Properties
+    // MARK: - Public Properties
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var albumName: UILabel!
@@ -19,6 +19,7 @@ class AlbumDetailedViewController: UIViewController,  UITableViewDelegate, UITab
     
     var viewModel: AlbumDetailedViewModel!
     
+    // MARK: - Public Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -10,14 +10,17 @@ import Foundation
 import ReactiveSwift
 
 class AlbumDetailedViewModel {
-    // MARK: Properties
+    // MARK: - Private Properties
     private var artistName: String?
     private var collectionName: String?
     private var songs: [Song]?
     private var mutablePropertySongs: MutableProperty<[Song]>?
+    
+    // MARK: - Public Properties
     private(set) var albumImage: MutableProperty<UIImage>?
     
-    init(with album: Album?) {
+    // MARK: - Initializer
+    init(with album: Album?, image: MutableProperty<UIImage>?) {
         self.artistName = album?.info?.artistName
         self.collectionName = album?.info?.collectionName
         self.mutablePropertySongs = album?.songs
@@ -29,9 +32,10 @@ class AlbumDetailedViewModel {
             }
         }
         
-        self.albumImage = album?.artwork100
+        self.albumImage = image
     }
     
+    // MARK: - Public Methods
     func getArtistName() -> String? {
         return artistName
     }

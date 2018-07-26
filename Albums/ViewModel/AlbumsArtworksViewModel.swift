@@ -10,41 +10,46 @@ import Foundation
 import ReactiveSwift
 
 class AlbumsArtworksViewModel {
-    // MARK: - Properties
-    // Private variables
+    // MARK: - Private Properties
     private var albumModel: AlbumModel?
-    private var albumsArray: [Album] = [Album]()
     private var cellViewModelArray: [AlbumCVCViewModel] = [AlbumCVCViewModel]()
     private var albumDetailedViewModelArray: [AlbumDetailedViewModel] = [AlbumDetailedViewModel]()
     
-    // Public variables
-    private(set) var hasUpdated = MutableProperty(false)
+    // MARK: - Public Properties
+    private(set) var isFound = MutableProperty(false)
     
     // MARK: - Initializer
     init(model: AlbumModel) {
         self.albumModel = model
+        self.isFound.value = true
+        
         albumModel?.albumsArray.signal.observeResult({ [weak self] (result) in
             guard let weakSelf = self else { return }
             guard let array = result.value else { return }
             
-            weakSelf.albumsArray = array
             weakSelf.initializeViewModels(with: array)
             
-            weakSelf.hasUpdated.value = true
+            if array.count > 0 {
+                weakSelf.isFound.value = true
+            } else {
+                weakSelf.isFound.value = false
+            }
         })
     }
     
+    // MARK: - Private Methods
     private func initializeViewModels(with albumsArray: [Album]) {
         cellViewModelArray.removeAll()
         albumDetailedViewModelArray.removeAll()
         for album in albumsArray {
-            cellViewModelArray.append(AlbumCVCViewModel(withAlbumImage: album.artwork100))
-            albumDetailedViewModelArray.append(AlbumDetailedViewModel(with: album))
+            let newCollectionViewCellViewModel = AlbumCVCViewModel(with: album.artwork100)
+            cellViewModelArray.append(newCollectionViewCellViewModel)
+            albumDetailedViewModelArray.append(AlbumDetailedViewModel(with: album, image: newCollectionViewCellViewModel.albumImage))
         }
     }
     
+    // MARK: - Public Methods
     func disposeOfResources() {
-        albumsArray.removeAll()
         cellViewModelArray.removeAll()
         albumDetailedViewModelArray.removeAll()
     }
@@ -60,11 +65,11 @@ class AlbumsArtworksViewModel {
     
     // MARK: Updating collection view
     func numberOfSections() -> Int {
-        return 1
+        return cellViewModelArray.count > 0 ? 1 : 0
     }
     
     func numberOfItemsInSection(_ section: Int) -> Int {
-        return albumsArray.count
+        return cellViewModelArray.count
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> AlbumCVCViewModel? {

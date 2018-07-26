@@ -8,13 +8,11 @@
 
 import UIKit
 import ReactiveSwift
-//import enum Result.NoError
 
 class AlbumCollectionViewCell: UICollectionViewCell {
     // MARK: Public Properties
     @IBOutlet weak var albumImage: UIImageView!
     
-    var imageDisposable: Disposable?
     var viewModel: AlbumCVCViewModel? {
         didSet {
             initializeCell()
@@ -23,20 +21,11 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Methods
     private func initializeCell() {
-        imageDisposable = viewModel?.albumImage?.producer.startWithResult({ [weak self] (receivedImage) in
+        viewModel?.getImage(completionHandler: { [weak self] (receivedImage) in
             guard let weakSelf = self else { return }
             DispatchQueue.main.async {
-                if let image = receivedImage.value {
-                    weakSelf.albumImage.image = image
-                }
+                weakSelf.albumImage.image = receivedImage
             }
         })
-        
-    }
-    
-    // MARK: - Public Methods
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageDisposable?.dispose()
     }
 }
