@@ -14,7 +14,7 @@ class AlbumCVCViewModel {
     private var image: UIImage?
     
     // MARK: - Public Properties
-    private(set) var albumImage = MutableProperty(UIImage()) // MutableProperty<UIImage>?
+    private(set) var albumImage = MutableProperty(UIImage())
     
     // MARK: - Initializer
     init(with urlString: String?) {
